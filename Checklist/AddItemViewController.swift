@@ -8,8 +8,14 @@
 
 import UIKit
 
-class AddItemViewControllerTableViewController: UITableViewController, UITextFieldDelegate {
+// protocol for delegating 
+protocol AddItemViewControllerDelegate: class {
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController)
+    func addItemViewController(_ controller: AddItemViewController,
+         didFinishAdding item: ChecklistItem)
+}
 
+class AddItemViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
